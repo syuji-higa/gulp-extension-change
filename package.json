@@ -1,0 +1,36 @@
+{
+  "name": "gulp-extension-change",
+  "version": "0.0.1",
+  "description": "change the extension",
+  "keywords": [
+    "gulpplugin",
+    "extension"
+  ],
+  "main": "lib/gulp-extension-change.js",
+  "scripts": {
+    "test": "mocha --compilers coffee:coffee-script --require coffee-script/register -t 10000 -R spec"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/syuji-higa/gulp-extension-change.git"
+  },
+  "author": "syuji-higa",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/syuji-higa/gulp-extension-change/issues"
+  },
+  "homepage": "https://github.com/syuji-higa/gulp-extension-change",
+  "dependencies": {
+    "coffee-script": "^1.8.0",
+    "gulp-util": "^3.0.1",
+    "through2": "^0.6.2"
+  },
+  "devDependencies": {
+    "gulp": "^3.8.10",
+    "gulp-coffee": "^2.2.0",
+    "gulp-mocha": "^1.1.1",
+    "gulp-replace": "^0.4.0",
+    "mocha": "^1.21.4",
+    "should": "^4.0.4"
+  }
+}
