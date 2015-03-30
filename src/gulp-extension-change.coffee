@@ -1,25 +1,28 @@
 through = require 'through2'
 { File } = require 'gulp-util'
+{ assign, clone } = require 'lodash'
 fs = require 'fs'
 
-module.exports = (options) ->
+defOpts =
+  afterExtension: 'php'
+  copy: false
 
-  if options.copy is undefined
-    options.copy = true
+module.exports = (opts) ->
+
+  { afterExtension, copy } = assign clone(defOpts), opts
 
   transform = (file, encode, callback) ->
 
     beforeFilePath = file.path
     filePathArr = beforeFilePath.match /(^.+)(\..+$)/
-    afterFilePath = "#{filePathArr[1]}.#{options.afterExtension}"
+    afterFilePath = "#{filePathArr[1]}.#{afterExtension}"
 
-    file = new File
-      path: afterFilePath
-      contents: new Buffer file.contents, 'utf-8'
+    file.path = afterFilePath
+    file.contents = new Buffer file.contents, 'utf-8'
 
     @push file
 
-    unless options.copy
+    unless copy
       fs.unlink beforeFilePath, (err) ->
         if err then console.log "successfully deleted #{beforeFilePath}"
 
